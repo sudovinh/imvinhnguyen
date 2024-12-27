@@ -1,6 +1,14 @@
 {
-  "$schema":  "https://raw.githubusercontent.com/jetify-com/devbox/0.13.7/.schema/devbox.schema.json",
-  "packages": ["go@latest"],
+  "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.13.7/.schema/devbox.schema.json",
+  "packages": {
+    "go":          "latest",
+    "templ":       "latest",
+    "tailwindcss": "latest",
+    "air":         "latest",
+    "darwin.apple_sdk.frameworks.Security": {
+      "platforms": ["x86_64-darwin", "aarch64-darwin"]
+    }
+  },
   "shell": {
     "init_hook": [
       "echo 'Welcome to devbox!' > /dev/null"
