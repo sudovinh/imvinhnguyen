@@ -41,13 +41,13 @@ make build
 Run the application
 
 ```bash
-make run
+PORT=<PORT NUMBER> make run
 ```
 
 Live reload the application:
 
 ```bash
-make watch
+PORT=<PORT NUMBER> make watch
 ```
 
 Run the test suite:
