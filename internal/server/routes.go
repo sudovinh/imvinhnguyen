@@ -9,6 +9,24 @@ import (
 	"imvinhnguyen/cmd/web"
 )
 
+var (
+	handlerTag        = "imvinhnguyen"
+	domain           = "imvinhnguyen.com"
+	profilePictureUrl = "https://pbs.twimg.com/profile_images/1401961547887374338/0-W1k3N__400x400.jpg"
+	youtubeVideoUrl  = "https://www.youtube.com/embed/vZEKF-0tA74?autoplay=1&mute=1"
+	socialLinks = []web.Links{
+		{Label: "Email", Link: "mailto:business@imvinhnguyen.com", Icon: "fa-regular fa-envelope"},
+		{Label: "YouTube", Link: "https://www.youtube.com/@imvinhnguyen", Icon: "fa-brands fa-youtube"},
+		{Label: "Twitter", Link: "https://twitter.com/imvinhnguyen", Icon: "fa-brands  fa-twitter"},
+		{Label: "Instagram", Link: "https://www.instagram.com/imvinhnguyen/", Icon: "fa-brands  fa-instagram"},
+		{Label: "Snapchat", Link: "https://www.snapchat.com/add/djvinhii", Icon: "fa-brands  fa-snapchat"},
+		{Label: "IMDb", Link: "https://www.imdb.com/name/nm12372318/", Icon: "fa-brands fa-imdb"},
+	}
+	quickLinks = []web.Links{
+		{Label: "My Ebay Store", Link: "https://www.ebay.com/usr/vinhsellstuff", Icon: ""},
+	}
+)
+
 func (s *Server) RegisterRoutes() http.Handler {
 	e := echo.New()
 	e.Use(middleware.Logger())
@@ -22,27 +40,16 @@ func (s *Server) RegisterRoutes() http.Handler {
 		MaxAge:           300,
 	}))
 
-	socialLinks := []web.Links{
-		{Label: "Email", Link: "mailto:business@imvinhnguyen.com", Icon: "fa-regular fa-envelope"},
-		{Label: "YouTube", Link: "https://www.youtube.com/@imvinhnguyen", Icon: "fa-brands fa-youtube"},
-		{Label: "Twitter", Link: "https://twitter.com/imvinhnguyen", Icon: "fa-brands  fa-twitter"},
-		{Label: "Instagram", Link: "https://www.instagram.com/imvinhnguyen/", Icon: "fa-brands  fa-instagram"},
-		{Label: "Snapchat", Link: "https://www.snapchat.com/add/djvinhii", Icon: "fa-brands  fa-snapchat"},
-		{Label: "IMDb", Link: "https://www.imdb.com/name/nm12372318/", Icon: "fa-brands fa-imdb"},
-	}
-
-	quickLinks := []web.Links{
-		{Label: "My Ebay Store", Link: "https://www.ebay.com/usr/vinhsellstuff", Icon: ""},
-	}
-
 	fileServer := http.FileServer(http.FS(web.Files))
 	e.GET("/assets/*", echo.WrapHandler(fileServer))
 
 	// e.GET("/web", echo.WrapHandler(templ.Handler(web.HelloForm())))
 	// e.POST("/hello", echo.WrapHandler(http.HandlerFunc(web.HelloWebHandler)))
 	e.GET("/links", echo.WrapHandler(templ.Handler(web.QuickLinks(
-		"https://pbs.twimg.com/profile_images/1401961547887374338/0-W1k3N__400x400.jpg",
-		"https://www.youtube.com/embed/vZEKF-0tA74?autoplay=1&mute=1",
+		domain,
+		handlerTag,
+		profilePictureUrl,
+		youtubeVideoUrl,
 		socialLinks,
 		quickLinks,
 	))))

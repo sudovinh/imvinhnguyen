@@ -6,7 +6,7 @@ type Links struct {
 	Icon  string
 }
 
-templ QuickLinks(handleTag, profileImg, youtubeVideo string, socialLinks []Links, quickLinks []Links) {
+templ QuickLinks(domain, handleTag, profileImg, youtubeVideo string, socialLinks []Links, quickLinks []Links) {
 	<!DOCTYPE html>
 	<html lang="en">
 		<head>
@@ -16,17 +16,17 @@ templ QuickLinks(handleTag, profileImg, youtubeVideo string, socialLinks []Links
 			<meta property="og:title" content={ handleTag + " | links" } />
 			<meta name="twitter:title" content={ handleTag + " | links" } />
 			<meta itemprop="name" content={ handleTag + " | links" } />
-			<meta name="application-name" content="imvinhnguyen | links" />
-			<meta property="og:site_name" content="imvinhnguyen | links" />
-			<meta name="url" content="https://imvinhnguyen.com/" />
-			<meta name="twitter:url" content="https://imvinhnguyen.com/" />
-			<meta property="og:url" content="https://imvinhnguyen.com/" />
+			<meta name="application-name" content={ handleTag + " | links" } />
+			<meta property="og:site_name" content={ handleTag + " | links" } />
+			<meta name="url" content={ "https:// " + handleTag + ".com/" } />
+			<meta name="twitter:url" content={ "https:// " + domain } />
+			<meta property="og:url" content={ "https:// " + domain } />
 			<meta property="og:type" content="website" />
-			<meta itemprop="description" content="Links to imvinhnguyen' stuff" />
-			<meta property="og:description" content="Links to imvinhnguyen' stuff" />
-			<meta name="description" content="Links to imvinhnguyen' stuff" />
-			<meta name="twitter:description" content="Links to imvinhnguyen' stuff" />
-			<title>IMVINHNGUYEN | LINKS</title>
+			<meta itemprop="description" content={ handleTag } />
+			<meta property="og:description" content={ handleTag } />
+			<meta name="description" content={ handleTag } />
+			<meta name="twitter:description" content={ handleTag } />
+			<title>{ handleTag + " | links" }</title>
 			<link href="assets/css/output.css" rel="stylesheet" />
 			<!--     Fonts     -->
 			<link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -45,10 +45,10 @@ templ QuickLinks(handleTag, profileImg, youtubeVideo string, socialLinks []Links
 				<!-- Profile Image -->
 				<img 
 					src={ string(templ.URL(profileImg)) } 
-					alt="imvinhnguyen" 
+					alt={ handleTag }
 					class="avatar"
 				/>
-				<div class="title">{"@imvinhnguyen"}</div>
+				<div class="title">{ "@" + handleTag }</div>
 				<p>Foodie | Tech Enthusiast | Software Engineer | Golf Apprentice</p>
 
 				<!-- Social Links -->
