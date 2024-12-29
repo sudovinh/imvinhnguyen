@@ -1,0 +1,98 @@
+package web
+
+type Links struct {
+	Label string
+	Link  string
+	Icon  string
+}
+
+templ QuickLinks(handleTag, profileImg, youtubeVideo string, socialLinks []Links, quickLinks []Links) {
+	<!DOCTYPE html>
+	<html lang="en">
+		<head>
+			<!-- Meta Tags -->
+			<meta charset="utf-8" />
+			<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+			<meta property="og:title" content={ handleTag + " | links" } />
+			<meta name="twitter:title" content={ handleTag + " | links" } />
+			<meta itemprop="name" content={ handleTag + " | links" } />
+			<meta name="application-name" content="imvinhnguyen | links" />
+			<meta property="og:site_name" content="imvinhnguyen | links" />
+			<meta name="url" content="https://imvinhnguyen.com/" />
+			<meta name="twitter:url" content="https://imvinhnguyen.com/" />
+			<meta property="og:url" content="https://imvinhnguyen.com/" />
+			<meta property="og:type" content="website" />
+			<meta itemprop="description" content="Links to imvinhnguyen' stuff" />
+			<meta property="og:description" content="Links to imvinhnguyen' stuff" />
+			<meta name="description" content="Links to imvinhnguyen' stuff" />
+			<meta name="twitter:description" content="Links to imvinhnguyen' stuff" />
+			<title>IMVINHNGUYEN | LINKS</title>
+			<link href="assets/css/output.css" rel="stylesheet" />
+			<!--     Fonts     -->
+			<link rel="preconnect" href="https://fonts.googleapis.com" />
+			<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+			<link href='https://fonts.googleapis.com/css?family=Grand+Hotel' rel='stylesheet' type='text/css'>
+			<link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+   		/>
+		</head>
+		<body>
+			<div class="main">
+				<!-- Profile Image -->
+				<img 
+					src={ string(templ.URL(profileImg)) } 
+					alt="imvinhnguyen" 
+					class="avatar"
+				/>
+				<div class="title">{"@imvinhnguyen"}</div>
+				<p>Foodie | Tech Enthusiast | Software Engineer | Golf Apprentice</p>
+
+				<!-- Social Links -->
+				<div class="social" style="display: flex; gap: 2rem; justify-content: center; margin: 1rem 0;">
+					for _, button := range socialLinks {
+							<a
+								class="social-container"
+								href={ templ.URL(button.Link) }
+								target="_blank"
+								style="font-size: 2rem;"
+							>
+							<i class={ button.Icon }></i>
+							</a>
+					}
+				</div>
+
+				<!-- Video -->
+				<iframe
+					class="video"
+					src={ string(templ.URL(youtubeVideo)) } 
+					frameborder="0" 
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+					allowfullscreen>
+				</iframe>
+
+				<!-- Quick Links -->
+				<div class="subtitle">Links</div>
+				<div id="links" role="navigation">
+					<ul>
+					for _, button := range quickLinks {
+						<li>
+							<a 
+								class="link-container"
+								href={ templ.URL(button.Link) }
+								target="_blank"
+							>
+							<span id="label">{ button.Label }</span>
+							</a>
+						</li>
+					}
+				  </ul>
+				</div>
+			</div>
+		</body>
+		<script src="assets/js/htmx.min.js"></script>
+	</html>
+}
