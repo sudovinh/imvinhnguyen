@@ -3,18 +3,19 @@ package server
 import (
 	"net/http"
 
+	"imvinhnguyen/cmd/web"
+
 	"github.com/a-h/templ"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
-	"imvinhnguyen/cmd/web"
 )
 
 var (
 	handlerTag        = "imvinhnguyen"
-	domain           = "imvinhnguyen.com"
+	domain            = "imvinhnguyen.com"
 	profilePictureUrl = "https://pbs.twimg.com/profile_images/1401961547887374338/0-W1k3N__400x400.jpg"
-	youtubeVideoUrl  = "https://www.youtube.com/embed/vZEKF-0tA74?autoplay=1&mute=1"
-	socialLinks = []web.Links{
+	youtubeVideoUrl   = "https://www.youtube.com/embed/vZEKF-0tA74?autoplay=1&mute=1"
+	socialLinks       = []web.Links{
 		{Label: "Email", Link: "mailto:business@imvinhnguyen.com", Icon: "fa-regular fa-envelope"},
 		{Label: "YouTube", Link: "https://www.youtube.com/@imvinhnguyen", Icon: "fa-brands fa-youtube"},
 		{Label: "Twitter", Link: "https://twitter.com/imvinhnguyen", Icon: "fa-brands  fa-twitter"},
@@ -40,33 +41,37 @@ func (s *Server) RegisterRoutes() http.Handler {
 		MaxAge:           300,
 	}))
 
+	// Serve static files
 	fileServer := http.FileServer(http.FS(web.Files))
 	e.GET("/assets/*", echo.WrapHandler(fileServer))
 
-	// e.GET("/web", echo.WrapHandler(templ.Handler(web.HelloForm())))
-	// e.POST("/hello", echo.WrapHandler(http.HandlerFunc(web.HelloWebHandler)))
-	e.GET("/links", echo.WrapHandler(templ.Handler(web.QuickLinks(
+	quickLinks := templ.Handler(web.QuickLinks(
 		domain,
 		handlerTag,
 		profilePictureUrl,
 		youtubeVideoUrl,
 		socialLinks,
 		quickLinks,
-	))))
+	))
 
-	e.GET("/", s.HelloWorldHandler)
-
+	// for now until we create proper home page
+	e.GET("/", echo.WrapHandler(quickLinks))
+	e.GET("/links", echo.WrapHandler(quickLinks))
 	e.GET("/health", s.healthHandler)
 
-	return e
-}
-
-func (s *Server) HelloWorldHandler(c echo.Context) error {
-	resp := map[string]string{
-		"message": "Hello World",
+	// redirect all other requests to home page
+	e.HTTPErrorHandler = func(err error, c echo.Context) {
+		if c.Response().Committed {
+			return
+		}
+		if c.Request().Method == http.MethodGet {
+			c.Redirect(http.StatusMovedPermanently, "/")
+		} else {
+			c.JSON(http.StatusNotFound, map[string]string{"message": "Page not found"})
+		}
 	}
 
-	return c.JSON(http.StatusOK, resp)
+	return e
 }
 
 func (s *Server) healthHandler(c echo.Context) error {
