@@ -2,6 +2,11 @@
 
 code for imvinhnguyen.com
 
+## Status
+
+[![Go-test](https://github.com/sudovinh/imvinhnguyen/actions/workflows/go-test.yml/badge.svg)](https://github.com/sudovinh/imvinhnguyen/actions/workflows/go-test.yml)
+[![goreleaser](https://github.com/sudovinh/imvinhnguyen/actions/workflows/release.yml/badge.svg)](https://github.com/sudovinh/imvinhnguyen/actions/workflows/release.yml)
+
 ## Getting Started
 
 This project uses [devbox](https://github.com/jetify-com/devbox) to manage its development environment.
@@ -61,3 +66,7 @@ Clean up binary from the last build:
 ```bash
 make clean
 ```
+
+## Notes
+
+Created using [Go-blueprint by Melkey](https://github.com/Melkeydev/go-blueprint)
