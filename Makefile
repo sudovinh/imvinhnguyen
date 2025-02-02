@@ -16,9 +16,18 @@ templ-install:
 			exit 1; \
 		fi; \
 	fi
+
 tailwind-install:
-	
-	@if [ ! -f tailwindcss ]; then curl -sL https://github.com/tailwindlabs/tailwindcss/releases/latest/download/tailwindcss-macos-x64 -o tailwindcss; fi
+	@if [ ! -f tailwindcss ]; then \
+		if [ "$$(uname)" = "Darwin" ]; then \
+			curl -sL https://github.com/tailwindlabs/tailwindcss/releases/latest/download/tailwindcss-macos-x64 -o tailwindcss; \
+		elif [ "$$(uname)" = "Linux" ]; then \
+			curl -sL https://github.com/tailwindlabs/tailwindcss/releases/latest/download/tailwindcss-linux-x64 -o tailwindcss; \
+		else \
+			echo "Unsupported OS. Exiting..."; \
+			exit 1; \
+		fi; \
+	fi
 	@chmod +x tailwindcss
 
 build: tailwind-install templ-install
