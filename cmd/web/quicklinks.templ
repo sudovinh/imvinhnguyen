@@ -66,17 +66,17 @@ templ QuickLinks(c *content.Content) {
 					class="avatar"
 				/>
 				<p class="about-bio">{ c.Profile.Bio }</p>
-				if len(c.Roles) > 0 {
-					<div class="roles">
-						for i, r := range c.Roles {
-							if i > 0 {
-								<span class="role-divider"></span>
-							}
-							<div class="role">
-								<span class="role-title">{ r.Title }</span>
-								<span class="role-sub">{ r.Sub }</span>
-							</div>
-						}
+				if len(c.Identities) > 0 {
+					<div class="identity">
+						<span class="identity-prefix">I'm a</span>
+						<span class="identity-rotator">
+							<span class="identity-words">
+								for _, w := range c.Identities {
+									<span class="identity-word">{ w }</span>
+								}
+							</span>
+						</span>
+						<span class="identity-cursor" aria-hidden="true"></span>
 					</div>
 				}
 			</section>

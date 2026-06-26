@@ -22,12 +22,15 @@ profile:
     Off the clock you'll find me tinkering with my homelab and 3D printer,
     chasing a better golf swing, and making videos and photos on the side.
 
-# The two highlighted blocks under the bio (title + small caption).
-roles:
-  - title: Software Engineer
-    sub: by day
-  - title: Creator
-    sub: on the side
+# The animated "I'm a ___" line under the bio cycles through these.
+# NOTE: if you change HOW MANY there are, update --count and the steps()
+# value in cmd/web/styles/input.css (.identity-words) to match the count.
+identities:
+  - Software Engineer
+  - Photographer
+  - Foodie
+  - Maker
+  - Dad
 
 youtube:
   embed_url: https://www.youtube.com/embed/vZEKF-0tA74?autoplay=1&mute=1

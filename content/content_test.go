@@ -39,9 +39,12 @@ func TestLoad(t *testing.T) {
 		}
 	}
 
-	for i, r := range c.Roles {
-		if r.Title == "" {
-			t.Errorf("roles[%d] missing title: %+v", i, r)
+	if len(c.Identities) == 0 {
+		t.Error("no identities defined for the animated line")
+	}
+	for i, id := range c.Identities {
+		if id == "" {
+			t.Errorf("identities[%d] is empty", i)
 		}
 	}
 }

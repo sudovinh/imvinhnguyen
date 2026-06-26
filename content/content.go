@@ -20,12 +20,6 @@ type Link struct {
 	Icon  string `yaml:"icon"`
 }
 
-// Role is one of the highlighted title/caption blocks under the bio.
-type Role struct {
-	Title string `yaml:"title"`
-	Sub   string `yaml:"sub"`
-}
-
 // Profile holds the hero/about identity fields.
 type Profile struct {
 	Name     string `yaml:"name"`
@@ -44,12 +38,12 @@ type YouTube struct {
 
 // Content is the full parsed site content.
 type Content struct {
-	Domain      string  `yaml:"domain"`
-	Profile     Profile `yaml:"profile"`
-	Roles       []Role  `yaml:"roles"`
-	YouTube     YouTube `yaml:"youtube"`
-	SocialLinks []Link  `yaml:"social_links"`
-	QuickLinks  []Link  `yaml:"quick_links"`
+	Domain      string   `yaml:"domain"`
+	Profile     Profile  `yaml:"profile"`
+	Identities  []string `yaml:"identities"`
+	YouTube     YouTube  `yaml:"youtube"`
+	SocialLinks []Link   `yaml:"social_links"`
+	QuickLinks  []Link   `yaml:"quick_links"`
 }
 
 // Load parses the embedded content.yaml.
