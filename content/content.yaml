@@ -1,0 +1,64 @@
+# ─────────────────────────────────────────────────────────────────────
+# imvinhnguyen.com — site content
+#
+# Edit this file to change anything on the page: your bio, tagline,
+# social icons, the featured video, and the link buttons.
+#
+# To add a new link button, copy a "- label/url" block under quick_links.
+# After editing, commit & push to main — the site rebuilds and redeploys
+# automatically (~2 min). To preview locally: PORT=8080 make watch
+# ─────────────────────────────────────────────────────────────────────
+
+domain: imvinhnguyen.com
+
+profile:
+  name: Vinh Nguyen
+  handle: imvinhnguyen          # rendered as @imvinhnguyen, no @ here
+  location: Los Angeles, CA
+  image: https://pbs.twimg.com/profile_images/1401961547887374338/0-W1k3N__400x400.jpg
+  bio: >
+    Hey, I'm Vinh — a software engineer in LA, a dad, and a serious foodie.
+    Off the clock you'll find me tinkering with my homelab and 3D printer,
+    chasing a better golf swing, and making videos and photos on the side.
+
+# The animated "I'm a ___" line under the big title cycles through these.
+# NOTE: if you change HOW MANY there are, update --count and the steps()
+# value in cmd/web/styles/input.css (.identity-words) to match the count.
+identities:
+  - Software Engineer
+  - Photographer
+  - Foodie
+  - Golfer
+  - Maker
+  - Dad
+
+youtube:
+  embed_url: https://www.youtube.com/embed/vZEKF-0tA74?autoplay=1&mute=1
+  channel_url: https://www.youtube.com/@imvinhnguyen
+
+# Social icons row. icon = a Font Awesome 6 class.
+# Browse icons at https://fontawesome.com/icons
+social_links:
+  - label: Email
+    url: mailto:business@imvinhnguyen.com
+    icon: fa-regular fa-envelope
+  - label: YouTube
+    url: https://www.youtube.com/@imvinhnguyen
+    icon: fa-brands fa-youtube
+  - label: Twitter
+    url: https://twitter.com/imvinhnguyen
+    icon: fa-brands fa-twitter
+  - label: Instagram
+    url: https://www.instagram.com/imvinhnguyen/
+    icon: fa-brands fa-instagram
+  - label: Snapchat
+    url: https://www.snapchat.com/add/djvinhii
+    icon: fa-brands fa-snapchat
+  - label: IMDb
+    url: https://www.imdb.com/name/nm12372318/
+    icon: fa-brands fa-imdb
+
+# The big link buttons at the bottom. Add as many as you like.
+quick_links:
+  - label: My Ebay Store
+    url: https://www.ebay.com/usr/vinhsellstuff

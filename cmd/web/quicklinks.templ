@@ -1,98 +1,140 @@
 package web
 
-type Links struct {
-	Label string
-	Link  string
-	Icon  string
-}
+import "imvinhnguyen/content"
 
-templ QuickLinks(domain, handleTag, profileImg, youtubeVideo string, socialLinks []Links, quickLinks []Links) {
+templ QuickLinks(c *content.Content) {
 	<!DOCTYPE html>
 	<html lang="en">
 		<head>
-			<!-- Meta Tags -->
-			<meta charset="utf-8" />
-			<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-			<meta property="og:title" content={ handleTag + " | links" } />
-			<meta name="twitter:title" content={ handleTag + " | links" } />
-			<meta itemprop="name" content={ handleTag + " | links" } />
-			<meta name="application-name" content={ handleTag + " | links" } />
-			<meta property="og:site_name" content={ handleTag + " | links" } />
-			<meta name="url" content={ "https:// " + handleTag + ".com/" } />
-			<meta name="twitter:url" content={ "https:// " + domain } />
-			<meta property="og:url" content={ "https:// " + domain } />
-			<meta property="og:type" content="website" />
-			<meta itemprop="description" content={ handleTag } />
-			<meta property="og:description" content={ handleTag } />
-			<meta name="description" content={ handleTag } />
-			<meta name="twitter:description" content={ handleTag } />
-			<title>{ handleTag + " | links" }</title>
-			<link href="assets/css/output.css" rel="stylesheet" />
-			<!--     Fonts     -->
-			<link rel="preconnect" href="https://fonts.googleapis.com" />
-			<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-			<link href='https://fonts.googleapis.com/css?family=Grand+Hotel' rel='stylesheet' type='text/css'>
+			<meta charset="utf-8"/>
+			<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+			<meta property="og:title" content={ c.Profile.Handle + " | links" }/>
+			<meta name="twitter:title" content={ c.Profile.Handle + " | links" }/>
+			<meta itemprop="name" content={ c.Profile.Handle + " | links" }/>
+			<meta name="application-name" content={ c.Profile.Handle + " | links" }/>
+			<meta property="og:site_name" content={ c.Profile.Handle + " | links" }/>
+			<meta name="url" content={ "https://" + c.Domain + "/" }/>
+			<meta name="twitter:url" content={ "https://" + c.Domain }/>
+			<meta property="og:url" content={ "https://" + c.Domain }/>
+			<meta property="og:type" content="website"/>
+			<meta itemprop="description" content={ c.Profile.Bio }/>
+			<meta property="og:description" content={ c.Profile.Bio }/>
+			<meta name="description" content={ c.Profile.Bio }/>
+			<meta name="twitter:description" content={ c.Profile.Bio }/>
+			<meta property="og:image" content={ c.Profile.Image }/>
+			<meta name="twitter:image" content={ c.Profile.Image }/>
+			<meta name="twitter:card" content="summary"/>
+			<title>{ c.Profile.Handle + " | links" }</title>
+			<link href="assets/css/output.css" rel="stylesheet"/>
+			<link rel="preconnect" href="https://fonts.googleapis.com"/>
+			<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+			<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 			<link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-   		/>
+				rel="stylesheet"
+				href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+				integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+				crossorigin="anonymous"
+				referrerpolicy="no-referrer"
+			/>
 		</head>
 		<body>
-			<div class="main">
-				<!-- Profile Image -->
-				<img 
-					src={ string(templ.URL(profileImg)) } 
-					alt={ handleTag }
+			<!-- Background atmosphere -->
+			<div class="glow-orb"></div>
+
+			<!-- Hero -->
+			<section class="hero animate-section" style="--delay: 0s">
+				<div class="hero-badge">{ "@" + c.Profile.Handle }</div>
+				<h1 class="hero-name">{ c.Profile.Name }</h1>
+				if len(c.Identities) > 0 {
+					<div class="identity">
+						<span class="identity-prefix">I'm a</span>
+						<span class="identity-rotator">
+							<span class="identity-words">
+								for _, w := range c.Identities {
+									<span class="identity-word">{ w }</span>
+								}
+							</span>
+						</span>
+						<span class="identity-cursor" aria-hidden="true"></span>
+					</div>
+				}
+				if c.Profile.Location != "" {
+					<div class="hero-location">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+							<circle cx="12" cy="10" r="3"></circle>
+						</svg>
+						{ c.Profile.Location }
+					</div>
+				}
+				<div class="hero-line"></div>
+			</section>
+
+			<!-- About -->
+			<section class="about animate-section" style="--delay: 0.15s">
+				<img
+					src={ string(templ.URL(c.Profile.Image)) }
+					alt={ c.Profile.Name }
 					class="avatar"
 				/>
-				<div class="title">{ "@" + handleTag }</div>
-				<p>Foodie | Tech Enthusiast | Software Engineer | Golf Apprentice</p>
+				<p class="about-bio">{ c.Profile.Bio }</p>
+			</section>
 
-				<!-- Social Links -->
-				<div class="social" style="display: flex; gap: 2rem; justify-content: center; margin: 1rem 0;">
-					for _, button := range socialLinks {
-							<a
-								class="social-container"
-								href={ templ.URL(button.Link) }
-								target="_blank"
-								style="font-size: 2rem;"
-							>
-							<i class={ button.Icon }></i>
-							</a>
+			<!-- Socials -->
+			<section class="socials animate-section" style="--delay: 0.3s">
+				for _, s := range c.SocialLinks {
+					<a
+						class="social-icon"
+						href={ templ.URL(s.URL) }
+						target="_blank"
+						rel="noopener noreferrer"
+						title={ s.Label }
+					>
+						<i class={ s.Icon }></i>
+					</a>
+				}
+			</section>
+
+			<!-- Featured Video -->
+			if c.YouTube.EmbedURL != "" {
+				<section class="video-section animate-section" style="--delay: 0.45s">
+					<div class="video-label">Latest on YouTube</div>
+					<div class="video-wrap">
+						<iframe
+							src={ string(templ.URL(c.YouTube.EmbedURL)) }
+							frameborder="0"
+							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+							allowfullscreen
+						></iframe>
+					</div>
+					if c.YouTube.ChannelURL != "" {
+						<a class="youtube-cta" href={ templ.URL(c.YouTube.ChannelURL) } target="_blank" rel="noopener noreferrer">
+							<i class="fa-brands fa-youtube"></i>
+							Subscribe on YouTube
+						</a>
 					}
-				</div>
+				</section>
+			}
 
-				<!-- Video -->
-				<iframe
-					class="video"
-					src={ string(templ.URL(youtubeVideo)) } 
-					frameborder="0" 
-					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-					allowfullscreen>
-				</iframe>
-
-				<!-- Quick Links -->
-				<div class="subtitle">Links</div>
-				<div id="links" role="navigation">
-					<ul>
-					for _, button := range quickLinks {
-						<li>
-							<a 
-								class="link-container"
-								href={ templ.URL(button.Link) }
-								target="_blank"
-							>
-							<span id="label">{ button.Label }</span>
-							</a>
-						</li>
+			<!-- Quick Links -->
+			if len(c.QuickLinks) > 0 {
+				<section class="links-section animate-section" style="--delay: 0.6s">
+					<div class="links-label">Links</div>
+					for _, l := range c.QuickLinks {
+						<a
+							class="link-card"
+							href={ templ.URL(l.URL) }
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							{ l.Label }
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+								<path d="M5 12h14M12 5l7 7-7 7"></path>
+							</svg>
+						</a>
 					}
-				  </ul>
-				</div>
-			</div>
+				</section>
+			}
 		</body>
-		<script src="assets/js/htmx.min.js"></script>
 	</html>
 }
