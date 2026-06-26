@@ -77,6 +77,3 @@ make terraform-apply
 - **[modernc.org/sqlite](https://pkg.go.dev/modernc.org/sqlite)** — pure-Go SQLite (used only by `/health`; no CGO)
 - **flox** · **Docker** · **Terraform** · **DigitalOcean App Platform**
 
-## Notes
-
-Originally scaffolded with [Go-blueprint by Melkey](https://github.com/Melkeydev/go-blueprint).
