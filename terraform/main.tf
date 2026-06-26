@@ -36,6 +36,21 @@ resource "digitalocean_app" "imvinhnguyen_web" {
       zone = "imvinhnguyen.com"
     }
 
+    # Route all traffic to our service. Declared explicitly because the
+    # imported app's ingress still referenced the old component name.
+    ingress {
+      rule {
+        component {
+          name = "sudovinh-imvinhnguyen"
+        }
+        match {
+          path {
+            prefix = "/"
+          }
+        }
+      }
+    }
+
     service {
       name               = "sudovinh-imvinhnguyen"
       instance_count     = 1

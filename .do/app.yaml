@@ -13,6 +13,16 @@ domains:
     type: ALIAS
     zone: imvinhnguyen.com
 
+# Route all traffic to our service (the imported app's ingress still
+# referenced the old component name).
+ingress:
+  rules:
+    - component:
+        name: sudovinh-imvinhnguyen
+      match:
+        path:
+          prefix: /
+
 services:
   - name: sudovinh-imvinhnguyen
     github:
