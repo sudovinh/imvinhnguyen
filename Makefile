@@ -1,30 +1,14 @@
 # Simple Makefile for a Go project
 
 # Build the application
+# Tooling (go, templ, tailwindcss, air) is provided by the flox environment.
+# Run inside `flox activate` (or prefix commands with `flox activate -- ...`).
 all: build test
-templ-install:
-	@if ! command -v templ > /dev/null; then \
-		read -p "Go's 'templ' is not installed on your machine. Do you want to install it? [Y/n] " choice; \
-		if [ "$$choice" != "n" ] && [ "$$choice" != "N" ]; then \
-			go install github.com/a-h/templ/cmd/templ@latest; \
-			if [ ! -x "$$(command -v templ)" ]; then \
-				echo "templ installation failed. Exiting..."; \
-				exit 1; \
-			fi; \
-		else \
-			echo "You chose not to install templ. Exiting..."; \
-			exit 1; \
-		fi; \
-	fi
-tailwind-install:
-	
-	@if [ ! -f tailwindcss ]; then curl -sL https://github.com/tailwindlabs/tailwindcss/releases/latest/download/tailwindcss-macos-x64 -o tailwindcss; fi
-	@chmod +x tailwindcss
 
-build: tailwind-install templ-install
+build:
 	@echo "Building..."
 	@templ generate
-	@./tailwindcss -i cmd/web/styles/input.css -o cmd/web/assets/css/output.css
+	@tailwindcss -i cmd/web/styles/input.css -o cmd/web/assets/css/output.css
 	@go build -o main cmd/api/main.go
 
 # Run the application
@@ -41,21 +25,30 @@ clean:
 	@echo "Cleaning..."
 	@rm -f main
 
-# Live Reload
+# Live Reload (air is provided by the flox environment)
 watch:
-	@if command -v air > /dev/null; then \
-            air; \
-            echo "Watching...";\
-        else \
-            read -p "Go's 'air' is not installed on your machine. Do you want to install it? [Y/n] " choice; \
-            if [ "$$choice" != "n" ] && [ "$$choice" != "N" ]; then \
-                go install github.com/air-verse/air@latest; \
-                air; \
-                echo "Watching...";\
-            else \
-                echo "You chose not to install air. Exiting..."; \
-                exit 1; \
-            fi; \
-        fi
+	@air
 
-.PHONY: all build run test clean watch tailwind-install templ-install
+OP_TF = op run --env-file=.env.terraform --
+
+terraform-init:
+	cd terraform && terraform init
+
+terraform-plan:
+	cd terraform && $(OP_TF) terraform plan
+
+terraform-apply:
+	cd terraform && $(OP_TF) terraform apply
+
+terraform-destroy:
+	cd terraform && $(OP_TF) terraform destroy
+
+docker-build:
+	docker build -t imvinhnguyen:local .
+
+docker-run:
+	docker run --rm -p 8080:8080 imvinhnguyen:local
+
+.PHONY: all build run test clean watch \
+        terraform-init terraform-plan terraform-apply terraform-destroy \
+        docker-build docker-run
