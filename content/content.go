@@ -24,7 +24,6 @@ type Link struct {
 type Profile struct {
 	Name     string `yaml:"name"`
 	Handle   string `yaml:"handle"`
-	Tagline  string `yaml:"tagline"`
 	Location string `yaml:"location"`
 	Image    string `yaml:"image"`
 	Bio      string `yaml:"bio"`

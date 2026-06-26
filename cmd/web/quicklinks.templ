@@ -45,7 +45,19 @@ templ QuickLinks(c *content.Content) {
 			<section class="hero animate-section" style="--delay: 0s">
 				<div class="hero-badge">{ "@" + c.Profile.Handle }</div>
 				<h1 class="hero-name">{ c.Profile.Name }</h1>
-				<p class="hero-tagline">{ c.Profile.Tagline }</p>
+				if len(c.Identities) > 0 {
+					<div class="identity">
+						<span class="identity-prefix">I'm a</span>
+						<span class="identity-rotator">
+							<span class="identity-words">
+								for _, w := range c.Identities {
+									<span class="identity-word">{ w }</span>
+								}
+							</span>
+						</span>
+						<span class="identity-cursor" aria-hidden="true"></span>
+					</div>
+				}
 				if c.Profile.Location != "" {
 					<div class="hero-location">
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -66,19 +78,6 @@ templ QuickLinks(c *content.Content) {
 					class="avatar"
 				/>
 				<p class="about-bio">{ c.Profile.Bio }</p>
-				if len(c.Identities) > 0 {
-					<div class="identity">
-						<span class="identity-prefix">I'm a</span>
-						<span class="identity-rotator">
-							<span class="identity-words">
-								for _, w := range c.Identities {
-									<span class="identity-word">{ w }</span>
-								}
-							</span>
-						</span>
-						<span class="identity-cursor" aria-hidden="true"></span>
-					</div>
-				}
 			</section>
 
 			<!-- Socials -->

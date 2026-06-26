@@ -123,15 +123,6 @@ body::before {
   overflow: visible;
 }
 
-.hero-tagline {
-  font-family: var(--font-body);
-  font-size: 1.05rem;
-  font-weight: 400;
-  color: var(--text-muted);
-  letter-spacing: 0.04em;
-  margin-bottom: 1rem;
-}
-
 .hero-location {
   display: inline-flex;
   align-items: center;
@@ -196,9 +187,10 @@ body::before {
 }
 
 .identity {
-  display: inline-flex;
+  display: flex;
+  justify-content: center;
   align-items: center;
-  margin-top: 0.5rem;
+  margin: 0 0 1.25rem;
   font-family: var(--font-body);
   font-size: 1.05rem;
   font-weight: 500;
@@ -219,11 +211,11 @@ body::before {
 .identity-words {
   /* If you change the number of `identities` in content.yaml, update BOTH
      --count and the steps() value below (duration = count * 2.2s). */
-  --count: 5;
+  --count: 6;
   --line: 1.6em;
   display: flex;
   flex-direction: column;
-  animation: identity-roll 11s steps(5) infinite;
+  animation: identity-roll 13.2s steps(6) infinite;
 }
 
 .identity-word {
