@@ -22,7 +22,7 @@ jobs:
         with:
           # Latest patch of the go.mod minor line, so govulncheck sees the
           # stdlib security fixes (go.mod's exact 1.25.0 ships known CVEs).
-          go-version: "1.25"
+          go-version: "1.26"
           check-latest: true
 
       - name: Install templ
