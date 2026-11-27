@@ -56,9 +56,22 @@ func (s *Server) RegisterRoutes() http.Handler {
 		}
 	}
 
-	return e
+	return headAsGet(e)
 }
 
 func (s *Server) healthHandler(c echo.Context) error {
 	return c.JSON(http.StatusOK, s.db.Health())
+}
+
+// headAsGet answers HEAD like GET. Echo only routes registered methods, so
+// uptime checks and link previews got 404/405. Echo routes a GET copy of the
+// request; w still belongs to the HEAD request, so net/http drops the body.
+func headAsGet(h http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if r.Method == http.MethodHead {
+			r = r.Clone(r.Context())
+			r.Method = http.MethodGet
+		}
+		h.ServeHTTP(w, r)
+	})
 }
