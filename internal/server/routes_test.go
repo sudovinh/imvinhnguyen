@@ -33,6 +33,9 @@ func TestRegisterRoutes(t *testing.T) {
 		{"GET", "/", http.StatusOK},
 		{"GET", "/links", http.StatusOK},
 		{"GET", "/health", http.StatusOK},
+		// Uptime checks and link previews send HEAD; Echo doesn't route it to GET.
+		{"HEAD", "/", http.StatusOK},
+		{"HEAD", "/links", http.StatusOK},
 	}
 
 	for _, tt := range tests {
