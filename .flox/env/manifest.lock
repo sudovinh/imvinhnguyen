@@ -9,6 +9,9 @@
       "go": {
         "pkg-path": "go"
       },
+      "opentofu": {
+        "pkg-path": "opentofu"
+      },
       "tailwindcss": {
         "pkg-path": "tailwindcss"
       },
@@ -37,7 +40,8 @@
       "scrape_date": "2026-06-17T03:13:13.408245Z",
       "stabilities": [
         "staging",
-        "unstable"
+        "unstable",
+        "stable"
       ],
       "unfree": false,
       "version": "1.65.3",
@@ -67,7 +71,8 @@
       "scrape_date": "2026-06-17T03:44:07.746760Z",
       "stabilities": [
         "staging",
-        "unstable"
+        "unstable",
+        "stable"
       ],
       "unfree": false,
       "version": "1.65.3",
@@ -78,36 +83,6 @@
         "out": "/nix/store/sqg8b00vjkaxsrzjmj1hxsvy8p8cfh9f-air-1.65.3"
       },
       "system": "aarch64-linux",
-      "group": "toplevel",
-      "priority": 5
-    },
-    {
-      "attr_path": "air",
-      "broken": false,
-      "derivation": "/nix/store/dnnvzx35mwbs5w9zkhvgchpskyiaqmki-air-1.65.3.drv",
-      "description": "Live reload for Go apps",
-      "install_id": "air",
-      "license": "GPL-3.0-only",
-      "locked_url": "https://github.com/flox/nixpkgs?rev=567a49d1913ce81ac6e9582e3553dd90a955875f",
-      "name": "air-1.65.3",
-      "pname": "air",
-      "rev": "567a49d1913ce81ac6e9582e3553dd90a955875f",
-      "rev_count": 1017464,
-      "rev_date": "2026-06-16T02:33:49Z",
-      "scrape_date": "2026-06-17T04:13:05.710880Z",
-      "stabilities": [
-        "staging",
-        "unstable"
-      ],
-      "unfree": false,
-      "version": "1.65.3",
-      "outputs_to_install": [
-        "out"
-      ],
-      "outputs": {
-        "out": "/nix/store/1zxdp4zbw1a4jpndgla0nyy26frw68k5-air-1.65.3"
-      },
-      "system": "x86_64-darwin",
       "group": "toplevel",
       "priority": 5
     },
@@ -127,7 +102,8 @@
       "scrape_date": "2026-06-17T04:47:03.702274Z",
       "stabilities": [
         "staging",
-        "unstable"
+        "unstable",
+        "stable"
       ],
       "unfree": false,
       "version": "1.65.3",
@@ -157,11 +133,13 @@
       "scrape_date": "2026-06-17T03:13:14.979907Z",
       "stabilities": [
         "staging",
-        "unstable"
+        "unstable",
+        "stable"
       ],
       "unfree": false,
       "version": "1.26.3",
       "outputs_to_install": [
+        "out",
         "out"
       ],
       "outputs": {
@@ -187,7 +165,8 @@
       "scrape_date": "2026-06-17T03:44:10.523965Z",
       "stabilities": [
         "staging",
-        "unstable"
+        "unstable",
+        "stable"
       ],
       "unfree": false,
       "version": "1.26.3",
@@ -198,36 +177,6 @@
         "out": "/nix/store/jkcwcbwvhgzmxg59798z4clmj4bfv42i-go-1.26.3"
       },
       "system": "aarch64-linux",
-      "group": "toplevel",
-      "priority": 5
-    },
-    {
-      "attr_path": "go",
-      "broken": false,
-      "derivation": "/nix/store/7injq3dc4gh49fwhgh403kf7n1y6f9ci-go-1.26.3.drv",
-      "description": "Go Programming language",
-      "install_id": "go",
-      "license": "BSD-3-Clause",
-      "locked_url": "https://github.com/flox/nixpkgs?rev=567a49d1913ce81ac6e9582e3553dd90a955875f",
-      "name": "go-1.26.3",
-      "pname": "go",
-      "rev": "567a49d1913ce81ac6e9582e3553dd90a955875f",
-      "rev_count": 1017464,
-      "rev_date": "2026-06-16T02:33:49Z",
-      "scrape_date": "2026-06-17T04:13:07.336579Z",
-      "stabilities": [
-        "staging",
-        "unstable"
-      ],
-      "unfree": false,
-      "version": "1.26.3",
-      "outputs_to_install": [
-        "out"
-      ],
-      "outputs": {
-        "out": "/nix/store/3f2jzvxmhhlarjqxy1p7i9r5l34siz29-go-1.26.3"
-      },
-      "system": "x86_64-darwin",
       "group": "toplevel",
       "priority": 5
     },
@@ -247,16 +196,112 @@
       "scrape_date": "2026-06-17T04:47:06.772425Z",
       "stabilities": [
         "staging",
-        "unstable"
+        "unstable",
+        "stable"
       ],
       "unfree": false,
       "version": "1.26.3",
       "outputs_to_install": [
         "out",
+        "out",
         "out"
       ],
       "outputs": {
         "out": "/nix/store/33fw5m31lfcnk4ff2f0df7j2bxnh8lgk-go-1.26.3"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "opentofu",
+      "broken": false,
+      "derivation": "/nix/store/4g949ss4pn4vs4c13vsi41rapv37hns1-opentofu-1.12.1.drv",
+      "description": "Tool for building, changing, and versioning infrastructure",
+      "install_id": "opentofu",
+      "license": "MPL-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=567a49d1913ce81ac6e9582e3553dd90a955875f",
+      "name": "opentofu-1.12.1",
+      "pname": "opentofu",
+      "rev": "567a49d1913ce81ac6e9582e3553dd90a955875f",
+      "rev_count": 1017464,
+      "rev_date": "2026-06-16T02:33:49Z",
+      "scrape_date": "2026-06-17T03:13:44.713914Z",
+      "stabilities": [
+        "staging",
+        "unstable",
+        "stable"
+      ],
+      "unfree": false,
+      "version": "1.12.1",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/pdmkqjqml48g720dqcsf6r243m9hfpis-opentofu-1.12.1"
+      },
+      "system": "aarch64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "opentofu",
+      "broken": false,
+      "derivation": "/nix/store/l70gxxdz5npr41h13n4x653jwlmsfbqq-opentofu-1.12.1.drv",
+      "description": "Tool for building, changing, and versioning infrastructure",
+      "install_id": "opentofu",
+      "license": "MPL-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=567a49d1913ce81ac6e9582e3553dd90a955875f",
+      "name": "opentofu-1.12.1",
+      "pname": "opentofu",
+      "rev": "567a49d1913ce81ac6e9582e3553dd90a955875f",
+      "rev_count": 1017464,
+      "rev_date": "2026-06-16T02:33:49Z",
+      "scrape_date": "2026-06-17T03:44:55.453490Z",
+      "stabilities": [
+        "staging",
+        "unstable",
+        "stable"
+      ],
+      "unfree": false,
+      "version": "1.12.1",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/wsc97vvjw9vxzh9l6n62akjpgkjx0yj3-opentofu-1.12.1"
+      },
+      "system": "aarch64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "opentofu",
+      "broken": false,
+      "derivation": "/nix/store/fnw07iax29ll1sb1gm4c6fzj3x0ynbz3-opentofu-1.12.1.drv",
+      "description": "Tool for building, changing, and versioning infrastructure",
+      "install_id": "opentofu",
+      "license": "MPL-2.0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=567a49d1913ce81ac6e9582e3553dd90a955875f",
+      "name": "opentofu-1.12.1",
+      "pname": "opentofu",
+      "rev": "567a49d1913ce81ac6e9582e3553dd90a955875f",
+      "rev_count": 1017464,
+      "rev_date": "2026-06-16T02:33:49Z",
+      "scrape_date": "2026-06-17T04:47:55.557099Z",
+      "stabilities": [
+        "staging",
+        "unstable",
+        "stable"
+      ],
+      "unfree": false,
+      "version": "1.12.1",
+      "outputs_to_install": [
+        "out",
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/yp4yp9jvs8lhymvxpm2z0nk91fb2sy61-opentofu-1.12.1"
       },
       "system": "x86_64-linux",
       "group": "toplevel",
@@ -278,7 +323,8 @@
       "scrape_date": "2026-06-17T03:15:15.959688Z",
       "stabilities": [
         "staging",
-        "unstable"
+        "unstable",
+        "stable"
       ],
       "unfree": false,
       "version": "tailwindcss_3-3.4.17",
@@ -308,7 +354,8 @@
       "scrape_date": "2026-06-17T03:46:43.645563Z",
       "stabilities": [
         "staging",
-        "unstable"
+        "unstable",
+        "stable"
       ],
       "unfree": false,
       "version": "tailwindcss_3-3.4.17",
@@ -319,36 +366,6 @@
         "out": "/nix/store/rvj7893qyy2izkpw3xxws36ql73sp5zw-tailwindcss_3-3.4.17"
       },
       "system": "aarch64-linux",
-      "group": "toplevel",
-      "priority": 5
-    },
-    {
-      "attr_path": "tailwindcss",
-      "broken": false,
-      "derivation": "/nix/store/l5yzq4nrkhbg20iqg985s2fygcgvzvw5-tailwindcss_3-3.4.17.drv",
-      "description": "Command-line tool for the CSS framework with composable CSS classes, standalone CLI",
-      "install_id": "tailwindcss",
-      "license": "MIT",
-      "locked_url": "https://github.com/flox/nixpkgs?rev=567a49d1913ce81ac6e9582e3553dd90a955875f",
-      "name": "tailwindcss_3-3.4.17",
-      "pname": "tailwindcss",
-      "rev": "567a49d1913ce81ac6e9582e3553dd90a955875f",
-      "rev_count": 1017464,
-      "rev_date": "2026-06-16T02:33:49Z",
-      "scrape_date": "2026-06-17T04:15:09.585603Z",
-      "stabilities": [
-        "staging",
-        "unstable"
-      ],
-      "unfree": false,
-      "version": "tailwindcss_3-3.4.17",
-      "outputs_to_install": [
-        "out"
-      ],
-      "outputs": {
-        "out": "/nix/store/c7q61766fs1a5y9s6l1fnmg003r0x3jx-tailwindcss_3-3.4.17"
-      },
-      "system": "x86_64-darwin",
       "group": "toplevel",
       "priority": 5
     },
@@ -368,7 +385,8 @@
       "scrape_date": "2026-06-17T04:49:46.984916Z",
       "stabilities": [
         "staging",
-        "unstable"
+        "unstable",
+        "stable"
       ],
       "unfree": false,
       "version": "tailwindcss_3-3.4.17",
@@ -398,7 +416,8 @@
       "scrape_date": "2026-06-17T03:15:16.667691Z",
       "stabilities": [
         "staging",
-        "unstable"
+        "unstable",
+        "stable"
       ],
       "unfree": false,
       "version": "0.3.1001",
@@ -428,7 +447,8 @@
       "scrape_date": "2026-06-17T03:46:44.609813Z",
       "stabilities": [
         "staging",
-        "unstable"
+        "unstable",
+        "stable"
       ],
       "unfree": false,
       "version": "0.3.1001",
@@ -439,36 +459,6 @@
         "out": "/nix/store/7my5y7wvdp3hvk536r84sx90v5c6kb66-templ-0.3.1001"
       },
       "system": "aarch64-linux",
-      "group": "toplevel",
-      "priority": 5
-    },
-    {
-      "attr_path": "templ",
-      "broken": false,
-      "derivation": "/nix/store/3ri5ksmh2w0pgwfw58ilv7h8n2v3c3ij-templ-0.3.1001.drv",
-      "description": "Language for writing HTML user interfaces in Go",
-      "install_id": "templ",
-      "license": "MIT",
-      "locked_url": "https://github.com/flox/nixpkgs?rev=567a49d1913ce81ac6e9582e3553dd90a955875f",
-      "name": "templ-0.3.1001",
-      "pname": "templ",
-      "rev": "567a49d1913ce81ac6e9582e3553dd90a955875f",
-      "rev_count": 1017464,
-      "rev_date": "2026-06-16T02:33:49Z",
-      "scrape_date": "2026-06-17T04:15:10.299696Z",
-      "stabilities": [
-        "staging",
-        "unstable"
-      ],
-      "unfree": false,
-      "version": "0.3.1001",
-      "outputs_to_install": [
-        "out"
-      ],
-      "outputs": {
-        "out": "/nix/store/vjwxxmrdx2v14h69y80rh44xhv95zi5i-templ-0.3.1001"
-      },
-      "system": "x86_64-darwin",
       "group": "toplevel",
       "priority": 5
     },
@@ -488,7 +478,8 @@
       "scrape_date": "2026-06-17T04:49:47.976956Z",
       "stabilities": [
         "staging",
-        "unstable"
+        "unstable",
+        "stable"
       ],
       "unfree": false,
       "version": "0.3.1001",
