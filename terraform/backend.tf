@@ -33,16 +33,9 @@ terraform {
     method "aes_gcm" "state" {
       keys = key_provider.pbkdf2.state
     }
-    # MIGRATION PHASE: reads the existing plaintext state once. OpenTofu
-    # forbids `enforced = true` alongside an unencrypted fallback, so the
-    # follow-up drops this method + fallback and sets enforced on state.
-    method "unencrypted" "migrate" {}
-
     state {
-      method = method.aes_gcm.state
-      fallback {
-        method = method.unencrypted.migrate
-      }
+      method   = method.aes_gcm.state
+      enforced = true
     }
     plan {
       method   = method.aes_gcm.state
