@@ -30,7 +30,7 @@ Requires a `.env` file (already present) with:
 
 The dev environment is managed by **flox** (`.flox/`). Run `flox activate` to
 enter it (or prefix commands: `flox activate -- make build`). It provides go,
-templ, tailwindcss, and air. The SQLite driver is pure Go (`modernc.org/sqlite`),
+templ, tailwindcss, air, and tofu. The SQLite driver is pure Go (`modernc.org/sqlite`),
 so builds need no CGO/C toolchain.
 
 ## Editing site content

@@ -61,13 +61,15 @@ GitHub Actions:
 - **`deploy-preview.yaml`** / **`delete-preview.yaml`** — spin up and tear down an ephemeral preview app per PR.
 
 The container image is built from the [`Dockerfile`](Dockerfile) (multi-stage,
-CGO-free, non-root). Infrastructure is managed with Terraform in
+CGO-free, non-root). Infrastructure is managed with OpenTofu in
 [`terraform/`](terraform/); the app spec lives in [`.do/app.yaml`](.do/app.yaml).
 
 ```sh
 make terraform-plan      # preview infra changes (1Password-backed DO token)
 make terraform-apply
 ```
+
+State is remote (DO Spaces, `sv-terraform-root`) and encrypted client-side with OpenTofu, so use `tofu`, not `terraform`. The passphrase is `op://r4botie4jmy4iitgejz2uwabay/imvinhnguyen-tofu-state/password`; lose it and the state is unreadable. To rotate, re-encrypt first (OpenTofu `fallback` on the old key), never edit 1Password alone.
 
 ## Tech stack
 

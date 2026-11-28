@@ -1,11 +1,26 @@
-# This file is maintained automatically by "terraform init".
+# This file is maintained automatically by "tofu init".
 # Manual edits may be lost in future updates.
 
-provider "registry.terraform.io/digitalocean/digitalocean" {
+provider "registry.opentofu.org/digitalocean/digitalocean" {
   version     = "2.91.0"
   constraints = "~> 2.0"
   hashes = [
+    "h1:660rCfvrSklxTfisL/SQO2M5YxwSiqeiOL96MfDd7BE=",
+    "h1:Bd68PUfESA1ydiKq1D5lKXtd/QJfO0M5iOAueVKMUM8=",
+    "h1:CAdmBgzWETThNzPmPumhQS5O3KRX+Ct2I9y3EUj4tYs=",
+    "h1:DZyjYDOa3XGD92YAOBMyyL1PdcJs1YDS0BTJKrNHjWQ=",
+    "h1:EYG7mX+EQUZW6u7sozYq8sqQEb9SAH25agYJNtIV5JI=",
+    "h1:QA3pxtESYDsTClFYla+qn1+6kWO9MtdIwBhSrKgf4+U=",
+    "h1:SahEBnMHB/ZfZXlHEE40B5v1KRTCHkTzMY0/XuUx0cs=",
     "h1:ZKrWFRwereeS4D8Mc3Z1/3FLjWtw7C4mgQh+Za48toI=",
+    "h1:fOfvfEcsB/UQuiJkZM1N/CkRYPE6MnsnyiAz8etO5e0=",
+    "h1:fY+fAdrCf2FcNO8YkVuW+JvgFb5vie1QdIUk5BfPpj0=",
+    "h1:iR7JnTSmtYICim48bFHc3xjWkEudLv5dKKxaTF5mjMY=",
+    "h1:oQUKZReGEQd7bXHXLCdXgbxR0sM+yOKjn6Cf3HMxd3k=",
+    "h1:ot9U1SICXKcFFucsfaDdofkacE7bloe+HKI/jPKnnfA=",
+    "h1:svWSZ+Ax8oEb295FhzNRCuExJWc4Basdlxtroft0jrQ=",
+    "h1:yKY+c4CCSvWomcwG/Jmsae/IAo/o2WHLletyi58Sr6E=",
+    "h1:zYJ9xNf7PhSuP62t2IZtTQ0zSj8/CXTFdCqoM/MevMY=",
     "zh:01e16e51aac2036eb91ddb57ea2a1641fb8b72d4c67c5edd966a79c87d45e420",
     "zh:07c4a58cbe73033911f74460605e25e44bb086574609a17c3c724a48d19783b0",
     "zh:112b3232a7f7c5969912d9549296c086e0915ef7000fedc3ef62ea2a29ac6ed9",

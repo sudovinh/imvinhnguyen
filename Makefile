@@ -32,16 +32,16 @@ watch:
 OP_TF = op run --env-file=.env.terraform --
 
 terraform-init:
-	cd terraform && $(OP_TF) terraform init
+	cd terraform && $(OP_TF) tofu init
 
 terraform-plan:
-	cd terraform && $(OP_TF) terraform plan
+	cd terraform && $(OP_TF) tofu plan
 
 terraform-apply:
-	cd terraform && $(OP_TF) terraform apply
+	cd terraform && $(OP_TF) tofu apply
 
 terraform-destroy:
-	cd terraform && $(OP_TF) terraform destroy
+	cd terraform && $(OP_TF) tofu destroy
 
 docker-build:
 	docker build -t imvinhnguyen:local .
